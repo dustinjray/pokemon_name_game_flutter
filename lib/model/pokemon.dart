@@ -12,6 +12,15 @@ class Pokemon {
       ..guessed = false;
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'spriteUrl': spriteUrl,
+      'guessed': guessed
+    };
+  }
+
   @override
   String toString() {
     return 'id: $id, name: $name, spriteUrl: $spriteUrl';

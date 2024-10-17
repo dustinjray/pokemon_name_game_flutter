@@ -21,6 +21,9 @@ class _StartScreenState extends State<StartScreen> {
       bool isMatch = !pkmn.guessed && equalsIgnoreCase(pkmn.name, guess);
       if (isMatch) {
         pkmn.guessed = true;
+        setState(() {
+          _allPokemon = _allPokemon;
+        });
       }
       return isMatch;
     });
@@ -49,15 +52,16 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.max, children: [
+      GuessEntryForm(checkGuessFunction: checkGuess),
       Expanded(
         child: SingleChildScrollView(
             child: Column(
                 children: _allPokemon
                     .map(
-                        (pokemon) => Text(pokemon.guessed ? pokemon.name! : ""))
+                        (pokemon) => Padding(padding: const EdgeInsets.all(2.0),
+                        child: Text(pokemon.guessed ? pokemon.name! : "")))
                     .toList())),
       ),
-      GuessEntryForm(checkGuessFunction: checkGuess)
     ]);
   }
 }

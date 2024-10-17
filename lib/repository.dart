@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:pokemon_name_game/model/pokemon.dart';
 
@@ -20,8 +21,8 @@ Future<List<Pokemon>> fetchAllPokemon() async {
 Future<Pokemon> fetchPokemon(int id) {
   final response = get(Uri.parse('$_baseUrl/$id'))
       .then((res) => Pokemon.fromJSON(jsonDecode(res.body)));
-  // Pokemon res = Pokemon.fromJSON(jsonDecode(response.body));
-  // print(res);
-  // return res;
   return response;
 }
+
+
+

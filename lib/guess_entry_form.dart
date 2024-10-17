@@ -27,6 +27,10 @@ class _GuessEntryFormState extends State<GuessEntryForm> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(controller: guessController);
+    return TextField(controller: guessController,
+    textAlign: TextAlign.center,
+    decoration: InputDecoration(hintText: 'Pokemon Name', 
+        hintStyle: TextStyle(
+          color: Colors.grey.withOpacity(0.8))));
   }
 }
